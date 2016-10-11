@@ -1,7 +1,5 @@
-//
 //  ViewController.m
 //  SensortagBleReceiver
-
 #import "ViewController.h"
 #import "AFNetworking.h"
 @interface ViewController (){
@@ -10,6 +8,8 @@
     double altitude;
     bool eventState;
 }
+
+@property (nonatomic,assign) BOOL didUpdateValueForCharacteristic;
 
 @end
 
@@ -23,92 +23,32 @@ int datacount = 0;
     [super viewDidLoad];
     eventState = true;
     accRange = ACC_RANGE_4G;
-    // Do any additional setup after loading the view, typically from a nib.
     _myCentralManager = [[CBCentralManager alloc] initWithDelegate:self queue:nil];
-    
-     //    http://54.70.11.186:8080/BioSensingWeb/index.jsp?parameter=00001:09232016115539001:56:67
-//    for(int i=0;i<10;i++){
-//        
-//        NSDateFormatter * dateformatter = [[NSDateFormatter alloc]init];
-//        dateformatter.dateFormat = @"MMddyyyyHHmmss";
-//        //    NSLog(@"date==%@",[dateformatter stringFromDate:[NSDate date]]);
-//        NSString * timestamp = [dateformatter stringFromDate:[NSDate date]];
-//        NSString * datacountStr = [NSString stringWithFormat:@"%d",datacount];
-//        NSString * parametersstr = [NSString stringWithFormat:@"%@:%@%@:%@:%@:%@",@"00001",timestamp,datacountStr,[NSString stringWithFormat:@"%d",i],[NSString stringWithFormat:@"%d",i],[NSString stringWithFormat:@"%d",i]];
-//         NSString * urlstr = [NSString stringWithFormat:@"%@%@",@"http://54.70.11.186:8080/BioSensingWeb/index.jsp?parameter=",parametersstr];
-//          NSLog(@"urlstr===%@",urlstr);
-//        NSArray * result =  [self makeSynchronousGetRequestWithURLString:urlstr];
-//        NSLog(@"result===%@",result);
-//
-//        
-//    }
-    
+    NSTimer * timer = [NSTimer scheduledTimerWithTimeInterval:15 target:self selector:@selector(senddatatoserver) userInfo:nil repeats:YES];
+    [[NSRunLoop mainRunLoop] addTimer:timer forMode:NSRunLoopCommonModes];
+
 }
 
-- (NSArray *)makeSynchronousPostRequestWithURLToGetNSArray: (NSString *)URL args:(NSDictionary *)args{
-    // Setup POST request
-    NSMutableURLRequest *urlRequest = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:URL]];
-    urlRequest.HTTPMethod = @"POST";
-    NSString *post = @"";
-    for (NSString *key in [args allKeys]){
-        NSString *temp = key;
-        temp = [temp stringByAppendingString:@"="];
-        NSString *entry = [temp stringByAppendingString:[args objectForKey:key]];
-        post = [post stringByAppendingString:entry];
-        post = [post stringByAppendingString:@"&"];
+- (void)senddatatoserver{
+    
+    if (_didUpdateValueForCharacteristic){
+    
+    AFHTTPRequestOperationManager * manager = [AFHTTPRequestOperationManager manager];
+    manager.responseSerializer.acceptableContentTypes = [NSSet setWithObject:@"text/html"];
+    NSString * urlStr = @"http://54.70.11.186:8080/BioSensingWeb/index.jsp?";
+    NSMutableDictionary * parameters = [NSMutableDictionary dictionary];
+    NSDateFormatter * dateformatter = [[NSDateFormatter alloc]init];
+    dateformatter.dateFormat = @"MMddyyyyHHmmss";
+    NSString * timestamp = [dateformatter stringFromDate:[NSDate date]];
+    NSString * datacountStr = [NSString stringWithFormat:@"%d",datacount];
+    NSString * parametersstr = [NSString stringWithFormat:@"%@:%@%@:%@:%@:%@:%@:%@:%@:%@:%@:%@:%@:%@:%@:%@:%@",@"00001",timestamp,datacountStr,_tagAccX.stringValue,_tagAccY.stringValue,_tagAccZ.stringValue,_tagGyroX.stringValue,_tagGyroY.stringValue,_tagGyroZ.stringValue,_tagMagX.stringValue,_tagMagY.stringValue,_tagMagZ.stringValue,_tagHum.stringValue,_tagObjTemp.stringValue,_tagAmbTemp.stringValue,_tagBmp,_tagOptical.stringValue];
+    parameters[@"parameter"] = parametersstr;
+    NSLog(@"parametersstr==%@",parametersstr);
+    datacount++;
+    
     }
-    post = [post substringToIndex:[post length]-1];
-    NSData *postData = [post dataUsingEncoding:NSASCIIStringEncoding allowLossyConversion:YES];
-    [urlRequest setHTTPBody:postData];
-    
-    NSURLResponse *response = nil;
-    NSError *error = nil;
-    NSData * data = [NSURLConnection sendSynchronousRequest:urlRequest returningResponse:&response error:&error];
-    if(error){
-         NSLog(@"error==%@",error);
-        return nil;
-    }
-    
-    NSArray *jsonResponse = [NSJSONSerialization JSONObjectWithData: data options: NSJSONReadingMutableContainers error: nil];
-    return jsonResponse;
-    
+
 }
-
-
-- (NSArray *) makeSynchronousGetRequestWithURLString:(NSString *)url{
-    
-    
-    //encode url params
-    url = [url stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
-   
-    // Setup GET request
-    NSMutableURLRequest *urlRequest = [NSMutableURLRequest requestWithURL:[NSURL URLWithString: url] cachePolicy:NSURLRequestReturnCacheDataElseLoad timeoutInterval:1000];
-    urlRequest.HTTPMethod = @"GET";
-    
-    NSURLResponse *response = nil;
-    NSError *error = nil;
-    NSData * data = [NSURLConnection sendSynchronousRequest:urlRequest returningResponse:&response error:&error];
-    if(error){
-         NSLog(@"error==%@",error);
-        return nil;
-    }
-    
-    if (data == nil) {
-        return nil;
-    }
-    
-    NSError *jsonError = nil;
-    NSArray *jsonResponse = [NSJSONSerialization JSONObjectWithData: data options: NSJSONReadingAllowFragments error: &jsonError];
-    
-    if(jsonError){
-         NSLog(@"jsonError==%@",jsonError);
-        return jsonError;
-    }else{
-        return jsonResponse;
-    }
-    
-}
-
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
@@ -142,23 +82,34 @@ int datacount = 0;
       advertisementData:(NSDictionary *)advertisementData
                    RSSI:(NSNumber *)RSSI
 {
-    NSLog(@"Discovered %@", peripheral.name);
-    NSLog(@"UUID %@", peripheral.identifier);
-    NSLog(@"peripheral==%@", peripheral);
+    NSLog(@"bluetoothHandler: Found peripheral with UUID : %@ and Name : %@ (%ld dBm)",peripheral.identifier,peripheral.name,(long)[RSSI integerValue]);
+
+    _rssi = RSSI;
+    _rssiLabel.text = [NSString stringWithFormat:@"%@ dBm",RSSI.stringValue];
+    NSLog(@"Discovered-centralManager === %@", peripheral.name);
+    NSLog(@"UUID-centralManager ==== %@", peripheral.identifier);
+    NSLog(@"peripheral-centralManager===%@", peripheral);
     _peripheralDevice = peripheral;
     _peripheralDevice.delegate = self;
     [_myCentralManager connectPeripheral:_peripheralDevice options:nil];
     
 }
 
+- (void)peripheral:(CBPeripheral *)peripheral didReadRSSI:(NSNumber *)RSSI error:(nullable NSError *)error{
+      NSLog(@"bluetoothHandler11111: Found peripheral with UUID : %@ and Name : %@ (%ld dBm)",peripheral.identifier,peripheral.name,(long)[RSSI integerValue]);
+    _rssi = RSSI;
+    _rssiLabel.text = [NSString stringWithFormat:@"%@ dBm",RSSI.stringValue];
 
-
+}
+     
 - (void) centralManager:(CBCentralManager *) central
    didConnectPeripheral:(CBPeripheral *)peripheral
 {
     NSLog(@"Peripheral connected");
     peripheral.delegate = self;
     [peripheral discoverServices:nil];
+    
+  
 }
 
 
@@ -166,7 +117,7 @@ int datacount = 0;
 - (void)peripheral:(CBPeripheral *)peripheral didDiscoverServices:(NSError *)error
 {
     for (CBService *service in peripheral.services) {
-        NSLog(@"Discoverd serive %@", service.UUID);
+        NSLog(@"Discoverd serive-didDiscoverServices %@", service.UUID);
         [peripheral discoverCharacteristics:nil forService:service];
     }
 }
@@ -176,30 +127,28 @@ int datacount = 0;
 
 - (void) peripheral:(CBPeripheral *)peripheral didDiscoverCharacteristicsForService:(CBService *)service error:(NSError *)error
 {
+    
     int enable = ENABLE_SENSOR_CODE;
     int frequency = 0x0A;//0x64; 
     NSData *enableData = [NSData dataWithBytes:&enable length: 1];
     NSData *frequencyData = [NSData dataWithBytes:&frequency length: 1];
     for (CBCharacteristic *characteristic in service.characteristics) {
-        NSLog(@"Discovered characteristic %@", characteristic);
+        NSLog(@"Discovered characteristic--didDiscoverCharacteristicsForService %@", characteristic);
         //[_peripheralDevice readValueForCharacteristic:characteristic];
-        if([characteristic.UUID isEqual:[CBUUID UUIDWithString:UUID_HUM_CONF]]){ 
+        if([characteristic.UUID isEqual:[CBUUID UUIDWithString:UUID_HUM_CONF]]){ //
             [peripheral writeValue:enableData forCharacteristic:characteristic type:CBCharacteristicWriteWithResponse];
             [peripheral setNotifyValue:YES forCharacteristic:[self getCharateristicWithUUID:UUID_HUM_DATA from:service]];
-        } else if ([characteristic.UUID isEqual:[CBUUID UUIDWithString:UUID_IRT_CONF]]){ 
+        } else if ([characteristic.UUID isEqual:[CBUUID UUIDWithString:UUID_IRT_CONF]]){ //
             [peripheral writeValue:enableData forCharacteristic:characteristic type:CBCharacteristicWriteWithResponse];
             [peripheral setNotifyValue:YES forCharacteristic:[self getCharateristicWithUUID:UUID_IRT_DATA from:service]];
-        } else if ([characteristic.UUID isEqual:[CBUUID UUIDWithString:UUID_OPT_CONF]]){ 
+        } else if ([characteristic.UUID isEqual:[CBUUID UUIDWithString:UUID_OPT_CONF]]){ // 
             [peripheral writeValue:enableData forCharacteristic:characteristic type:CBCharacteristicWriteWithResponse];
             [peripheral setNotifyValue:YES forCharacteristic:[self getCharateristicWithUUID:UUID_OPT_DATA from:service]];
-        } else if ( [characteristic.UUID isEqual:[CBUUID UUIDWithString:UUID_BAR_CONF]]){ 
+        } else if ( [characteristic.UUID isEqual:[CBUUID UUIDWithString:UUID_BAR_CONF]]){ //
             [peripheral writeValue:enableData forCharacteristic:characteristic type:CBCharacteristicWriteWithResponse];
             [peripheral setNotifyValue:YES forCharacteristic:[self getCharateristicWithUUID:UUID_BAR_DATA from:service]];
-        } else if ( [characteristic.UUID isEqual:[CBUUID UUIDWithString:UUID_MOV_CONF]]){ 
+        } else if ( [characteristic.UUID isEqual:[CBUUID UUIDWithString:UUID_MOV_CONF]]){ //
             
-            // http://promamo.com/?p=999
-            // http://www.objectivec-iphone.com/introduction/data-type/primitive.html
-            // http://www.muryou-tools.com/sinsuu-change.php
             unsigned short e = 0;
             e |= FLAG_ACC_X | FLAG_ACC_Y | FLAG_ACC_Z | FLAG_GYRO_X | FLAG_GYRO_Y | FLAG_GYRO_Z | FLAG_MAG;
             switch (accRange) {
@@ -217,7 +166,7 @@ int datacount = 0;
                 default:
                     break;
             }
-            NSLog(@"%d",e);
+            NSLog(@"eeeeeeeeeee====%d",e);
             NSData *ed = [NSData dataWithBytes:&e length: sizeof(e)];
             [peripheral writeValue:ed forCharacteristic:characteristic type:CBCharacteristicWriteWithResponse];
             [peripheral writeValue:frequencyData forCharacteristic:[self getCharateristicWithUUID:UUID_MOV_PERI from:service] type:CBCharacteristicWriteWithResponse];
@@ -248,21 +197,21 @@ int datacount = 0;
 - (void)peripheral:(CBPeripheral *)peripheral didUpdateValueForCharacteristic:(CBCharacteristic *)characteristic
              error:(NSError *)error
 {
+    _didUpdateValueForCharacteristic = YES;
+    [peripheral readRSSI];
+    
     if([characteristic.UUID isEqual:[CBUUID UUIDWithString:UUID_MOV_DATA]]){
         [self getMotionData:characteristic.value];
-    } else if([characteristic.UUID isEqual:[CBUUID UUIDWithString:UUID_HUM_DATA]]){ 
+    } else if([characteristic.UUID isEqual:[CBUUID UUIDWithString:UUID_HUM_DATA]]){
         [self getHumidityData:characteristic.value];
     } else if ([characteristic.UUID isEqual:[CBUUID UUIDWithString:UUID_IRT_DATA]]){
         [self getTemperatureData:characteristic.value];
-    } else if ([characteristic.UUID isEqual:[CBUUID UUIDWithString:UUID_OPT_DATA]]){ 
+    } else if ([characteristic.UUID isEqual:[CBUUID UUIDWithString:UUID_OPT_DATA]]){Optical Sensor
         [self getOpticalData:characteristic.value];
-    } else if ( [characteristic.UUID isEqual:[CBUUID UUIDWithString:UUID_BAR_DATA]]){ 
+    } else if ( [characteristic.UUID isEqual:[CBUUID UUIDWithString:UUID_BAR_DATA]]){Barometric Pressure Sensor
         [self getBmpData:characteristic.value];
     }
 }
-
-
-
 - (void) getTemperatureData:(NSData *)data{
     const Byte *orgBytes = [data bytes];
     uint16_t obj = (orgBytes[1] << 8) +orgBytes[0];
@@ -275,8 +224,6 @@ int datacount = 0;
     [_ambTempLabel setText:[_tagAmbTemp stringValue]];
 }
 
-
-
 - (void) getOpticalData:(NSData *)data {
     const Byte *orgBytes = [data bytes];
     uint16_t rawData = (orgBytes[3] << 24) + (orgBytes[2] << 16) + (orgBytes[1] << 8) +orgBytes[0];
@@ -284,7 +231,6 @@ int datacount = 0;
     _tagOptical = [[NSNumber alloc] initWithFloat:sensorOpt3001Convert(rawData)];
     [_opticalLabel setText:[_tagOptical stringValue]];
 }
-
 
 - (void) getBmpData:(NSData *)data{
     const Byte *orgBytes = [data bytes];
@@ -305,10 +251,8 @@ int datacount = 0;
     [_humLabel setText:[_tagHum stringValue]];
 }
 
-
 - (void) getMotionData:(NSData *) data
 {
-    datacount++;
     // http://processors.wiki.ti.com/index.php/CC2650_SensorTag_User's_Guide#Movement_Sensor
     const Byte *orgBytes = [data bytes];
     int16_t gyroX = (orgBytes[1] << 8) + orgBytes[0];
@@ -350,32 +294,6 @@ int datacount = 0;
     [_magzLabel setText:[_tagMagZ stringValue]];
     
     
-    AFHTTPRequestOperationManager * manager = [AFHTTPRequestOperationManager manager];
-    manager.responseSerializer.acceptableContentTypes = [NSSet setWithObject:@"text/html"];
-    NSString * urlStr = @"http://54.70.11.186:8080/BioSensingWeb/index.jsp?";
-    //    //    http://54.70.11.186:8080/BioSensingWeb/index.jsp?parameter=00001:09232016115539001:56:67
-    NSMutableDictionary * parameters = [NSMutableDictionary dictionary];
-    
-    NSDateFormatter * dateformatter = [[NSDateFormatter alloc]init];
-    dateformatter.dateFormat = @"MMddyyyyHHmmss";
-    NSString * timestamp = [dateformatter stringFromDate:[NSDate date]];
-    NSString * datacountStr = [NSString stringWithFormat:@"%d",datacount];
-    NSString * parametersstr = [NSString stringWithFormat:@"%@:%@%@:%@:%@:%@",@"00001",timestamp,datacountStr,_tagAccX.stringValue,_tagAccY.stringValue,_tagAccZ.stringValue];
-    parameters[@"parameter"] = parametersstr;
-    NSLog(@"parametersstr==%@",parametersstr);
-    if (datacount < 10) {
-        NSLog(@"datacount===%d",datacount);
-        
-        [manager POST:urlStr parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
-            NSLog(@"responseObject==%@",responseObject);
-        } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-            NSLog(@"error==%@",error);
-        }];
-        
-//             NSString * urlstr = [NSString stringWithFormat:@"%@%@",@"http://54.70.11.186:8080/BioSensingWeb/index.jsp?parameter=",parametersstr];
-//        NSArray * result =  [self makeSynchronousGetRequestWithURLString:urlstr];
-//        NSLog(@"result===%@",result);
-    }
   
 
     
