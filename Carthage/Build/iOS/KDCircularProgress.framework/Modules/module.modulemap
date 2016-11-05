@@ -1,0 +1,10 @@
+framework module KDCircularProgress {
+  umbrella header "KDCircularProgress.h"
+
+  export *
+  module * { export * }
+}
+
+module KDCircularProgress.Swift {
+    header "KDCircularProgress-Swift.h"
+}

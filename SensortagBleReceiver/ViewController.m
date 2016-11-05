@@ -2,11 +2,14 @@
 //  SensortagBleReceiver
 #import "ViewController.h"
 #import "AFNetworking.h"
+//#import "SensortagBleReceiver-Swift.h"
 @interface ViewController (){
     double latitude;
     double longitude;
     double altitude;
     bool eventState;
+    NSString * randomText;
+    double myText;
 }
 
 @property (nonatomic,assign) BOOL didUpdateValueForCharacteristic;
@@ -15,8 +18,10 @@
 
 @implementation ViewController
 
+
 NSString *UUID_KEY = @"CC2650 SensorTag";
 NSString *UUID = @"";
+double myText = 90;
 int accRange = 0;
 int datacount = 0;
 - (void)viewDidLoad {
@@ -45,6 +50,10 @@ int datacount = 0;
     parameters[@"parameter"] = parametersstr;
     NSLog(@"parametersstr==%@",parametersstr);
     datacount++;
+        
+    //self.tempvaluestr = [NSString stringWithFormat:@"%@:", _tagObjTemp.stringValue];
+//        NSNotificationCenter * defaulter = [[NSNotificationCenter defaultCenter] postNotificationName:@"sendtempvaluestr" object:_tempvaluestr userInfo:nil];
+//       _tempvaluestr = @"123";
     
     }
 
@@ -121,8 +130,6 @@ int datacount = 0;
         [peripheral discoverCharacteristics:nil forService:service];
     }
 }
-
-
 
 
 - (void) peripheral:(CBPeripheral *)peripheral didDiscoverCharacteristicsForService:(CBService *)service error:(NSError *)error
@@ -206,9 +213,9 @@ int datacount = 0;
         [self getHumidityData:characteristic.value];
     } else if ([characteristic.UUID isEqual:[CBUUID UUIDWithString:UUID_IRT_DATA]]){
         [self getTemperatureData:characteristic.value];
-    } else if ([characteristic.UUID isEqual:[CBUUID UUIDWithString:UUID_OPT_DATA]]){Optical Sensor
+    } else if ([characteristic.UUID isEqual:[CBUUID UUIDWithString:UUID_OPT_DATA]]){
         [self getOpticalData:characteristic.value];
-    } else if ( [characteristic.UUID isEqual:[CBUUID UUIDWithString:UUID_BAR_DATA]]){Barometric Pressure Sensor
+    } else if ( [characteristic.UUID isEqual:[CBUUID UUIDWithString:UUID_BAR_DATA]]){
         [self getBmpData:characteristic.value];
     }
 }
@@ -222,6 +229,18 @@ int datacount = 0;
     
     [_objTempLabel setText:[_tagObjTemp stringValue]];
     [_ambTempLabel setText:[_tagAmbTemp stringValue]];
+    //tempValue = [_tagObjTemp stringValue];
+     //self.tempvaluestr = @"123";
+    //self.tempvaluestr = [NSString stringWithFormat:@"%@", _tagObjTemp.stringValue];
+    NSString *str = [NSString stringWithFormat:@"%@", _tagAmbTemp.stringValue];
+    NSArray *Array = [str componentsSeparatedByString:@"."];
+    self.tempvaluestr = [Array objectAtIndex:0];
+    
+   //    NSString *separatorString = @".";
+//    NSString *myString = [NSString stringWithFormat:@"%@", _tagObjTemp.stringValue];
+//    self.tempvaluestr = [myString componentsSeparatedByString:separatorString];
+//   // self.allTempData
+    
 }
 
 - (void) getOpticalData:(NSData *)data {
@@ -230,6 +249,10 @@ int datacount = 0;
     //    NSLog(@"%f", sensorOpt3001Convert(rawData ));
     _tagOptical = [[NSNumber alloc] initWithFloat:sensorOpt3001Convert(rawData)];
     [_opticalLabel setText:[_tagOptical stringValue]];
+    NSString *str = [NSString stringWithFormat:@"%@", _tagOptical.stringValue];
+    NSArray *Array = [str componentsSeparatedByString:@"."];
+    self.opticalValueStr = [Array objectAtIndex:0];
+    
 }
 
 - (void) getBmpData:(NSData *)data{
@@ -239,6 +262,11 @@ int datacount = 0;
     //    int16_t press = (orgBytes[3] << 8) + orgBytes[2];
     _tagBmp = [[NSNumber alloc] initWithFloat:calcBmp280(press)];
     [_bmpLabel setText:[_tagBmp stringValue]];
+    //self.pressureValueStr = [NSString stringWithFormat:@"%@", _tagBmp.stringValue];
+    
+    NSString *str = [NSString stringWithFormat:@"%@", _tagBmp.stringValue];
+    NSArray *Array = [str componentsSeparatedByString:@"."];
+    self.pressureValueStr = [Array objectAtIndex:0];
 }
 
 - (void) getHumidityData:(NSData *)data{
@@ -249,7 +277,13 @@ int datacount = 0;
     //    NSLog(@"%f C, %f  RH", sensorHdc1000TempConvert(temp), sensorHdc1000HumConvert(hum));
     _tagHum = [[NSNumber alloc] initWithFloat:sensorHdc1000HumConvert(hum)];
     [_humLabel setText:[_tagHum stringValue]];
+    //self.humidityValueStr = [NSString stringWithFormat:@"%@", _tagHum.stringValue];
+    
+    NSString *str = [NSString stringWithFormat:@"%@", _tagHum.stringValue];
+    NSArray *Array = [str componentsSeparatedByString:@"."];
+    self.humidityValueStr = [Array objectAtIndex:0];
 }
+
 
 - (void) getMotionData:(NSData *) data
 {

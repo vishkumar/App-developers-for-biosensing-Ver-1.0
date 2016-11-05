@@ -1,0 +1,258 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Bucket
+   type = "1"
+   version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "../../Desktop/Biosensor App/Biosensor App/CircleView.swift"
+            timestampString = "498207126.848055"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "9"
+            endingLineNumber = "9"
+            landmarkName = "CircleView"
+            landmarkType = "3">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "SensortagBleReceiver.CircleView.__deallocating_deinit"
+                  moduleName = "SensortagBleReceiver"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/bhansali/Desktop/Biosensor%20App/Biosensor%20App/CircleView.swift"
+                  timestampString = "498206509.059944"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "0"
+                  endingLineNumber = "0"
+                  offsetFromSymbolStart = "4">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "SensortagBleReceiver.CircleView.init (nibName : Swift.Optional&lt;Swift.String&gt;, bundle : Swift.Optional&lt;__ObjC.Bundle&gt;) -&gt; SensortagBleReceiver.CircleView"
+                  moduleName = "SensortagBleReceiver"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/bhansali/Desktop/Biosensor%20App/Biosensor%20App/CircleView.swift"
+                  timestampString = "498206509.063478"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "13"
+                  endingLineNumber = "13"
+                  offsetFromSymbolStart = "57">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "SensortagBleReceiver.CircleView.__allocating_init (nibName : Swift.Optional&lt;Swift.String&gt;, bundle : Swift.Optional&lt;__ObjC.Bundle&gt;) -&gt; SensortagBleReceiver.CircleView"
+                  moduleName = "SensortagBleReceiver"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/bhansali/Desktop/Biosensor%20App/Biosensor%20App/CircleView.swift"
+                  timestampString = "498206509.066279"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "0"
+                  endingLineNumber = "0"
+                  offsetFromSymbolStart = "23">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "SensortagBleReceiver.CircleView.__allocating_init (coder : __ObjC.NSCoder) -&gt; Swift.Optional&lt;SensortagBleReceiver.CircleView&gt;"
+                  moduleName = "SensortagBleReceiver"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/bhansali/Desktop/Biosensor%20App/Biosensor%20App/CircleView.swift"
+                  timestampString = "498206509.06868"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "0"
+                  endingLineNumber = "0"
+                  offsetFromSymbolStart = "4">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "SensortagBleReceiver.CircleView.init (coder : __ObjC.NSCoder) -&gt; Swift.Optional&lt;SensortagBleReceiver.CircleView&gt;"
+                  moduleName = "SensortagBleReceiver"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/bhansali/Desktop/Biosensor%20App/Biosensor%20App/CircleView.swift"
+                  timestampString = "498206509.071067"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "13"
+                  endingLineNumber = "13"
+                  offsetFromSymbolStart = "19">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "../../Downloads/SensortagBleReceiver-master/SensortagBleReceiver/CircleLibViewController.swift"
+            timestampString = "499303199.217353"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "44"
+            endingLineNumber = "44"
+            landmarkName = "viewDidLoad()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "SensortagBleReceiver/ViewController.h"
+            timestampString = "499050431.745304"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "18"
+            endingLineNumber = "18"
+            landmarkName = "@interface ViewController"
+            landmarkType = "2">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "../../Downloads/SensortagBleReceiver-master/SensortagBleReceiver/CircleLibViewController.swift"
+            timestampString = "499303199.217353"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "88"
+            endingLineNumber = "88"
+            landmarkName = "viewWillAppear(_:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "SensortagBleReceiver.CircleLibViewController.viewWillAppear (Swift.Bool) -&gt; ()"
+                  moduleName = "SensortagBleReceiver"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/bhansali/Downloads/SensortagBleReceiver-master/SensortagBleReceiver/CircleLibViewController.swift"
+                  timestampString = "499119380.29193"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "74"
+                  endingLineNumber = "74"
+                  offsetFromSymbolStart = "335">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "SensortagBleReceiver.CircleLibViewController.(viewWillAppear (Swift.Bool) -&gt; ()).(closure #1)"
+                  moduleName = "SensortagBleReceiver"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/bhansali/Downloads/SensortagBleReceiver-master/SensortagBleReceiver/CircleLibViewController.swift"
+                  timestampString = "499119380.295067"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "75"
+                  endingLineNumber = "75"
+                  offsetFromSymbolStart = "15">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "SensortagBleReceiver/TempDetails.swift"
+            timestampString = "499319818.672268"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "10"
+            endingLineNumber = "10"
+            landmarkName = "TempDetails"
+            landmarkType = "3">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "SensortagBleReceiver.TempDetails.__deallocating_deinit"
+                  moduleName = "SensortagBleReceiver"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/bhansali/Desktop/FinalSensortagBleReceiver/SensortagBleReceiver/TempDetails.swift"
+                  timestampString = "499320109.610112"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "0"
+                  endingLineNumber = "0"
+                  offsetFromSymbolStart = "4">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "SensortagBleReceiver.TempDetails.__allocating_init (nibName : Swift.Optional&lt;Swift.String&gt;, bundle : Swift.Optional&lt;__ObjC.Bundle&gt;) -&gt; SensortagBleReceiver.TempDetails"
+                  moduleName = "SensortagBleReceiver"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/bhansali/Desktop/FinalSensortagBleReceiver/SensortagBleReceiver/TempDetails.swift"
+                  timestampString = "499320109.617824"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "0"
+                  endingLineNumber = "0"
+                  offsetFromSymbolStart = "23">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "SensortagBleReceiver.TempDetails.__allocating_init (coder : __ObjC.NSCoder) -&gt; Swift.Optional&lt;SensortagBleReceiver.TempDetails&gt;"
+                  moduleName = "SensortagBleReceiver"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/bhansali/Desktop/FinalSensortagBleReceiver/SensortagBleReceiver/TempDetails.swift"
+                  timestampString = "499320109.620261"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "0"
+                  endingLineNumber = "0"
+                  offsetFromSymbolStart = "4">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "SensortagBleReceiver.TempDetails.init (coder : __ObjC.NSCoder) -&gt; Swift.Optional&lt;SensortagBleReceiver.TempDetails&gt;"
+                  moduleName = "SensortagBleReceiver"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/bhansali/Desktop/FinalSensortagBleReceiver/SensortagBleReceiver/TempDetails.swift"
+                  timestampString = "499320109.622707"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "13"
+                  endingLineNumber = "13"
+                  offsetFromSymbolStart = "31">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
+</Bucket>
