@@ -33,8 +33,9 @@
 		C43F0BAC1DB85302002620BD /* Cartfile in Resources */ = {isa = PBXBuildFile; fileRef = C43F0BAB1DB85302002620BD /* Cartfile */; };
 		C43F0BAE1DB85418002620BD /* Home.swift in Sources */ = {isa = PBXBuildFile; fileRef = C43F0BAD1DB85418002620BD /* Home.swift */; };
 		C43F0BB01DB9C90C002620BD /* TempDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = C43F0BAF1DB9C90C002620BD /* TempDetails.swift */; };
-		C4CE23931DBAF6260031D581 /* Charts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C4CE238E1DBAF5E50031D581 /* Charts.framework */; };
-		C4CE23941DBAF6260031D581 /* Charts.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = C4CE238E1DBAF5E50031D581 /* Charts.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		C4993CE51DCE92F000799575 /* Charts-master in Resources */ = {isa = PBXBuildFile; fileRef = C4993CE41DCE92F000799575 /* Charts-master */; };
+		C4993CF71DCE963200799575 /* Charts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C4993CED1DCE931900799575 /* Charts.framework */; };
+		C4993CF81DCE963200799575 /* Charts.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = C4993CED1DCE931900799575 /* Charts.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		C4FEA0091DBFF43C00D69BCB /* MainInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4FEA0081DBFF43C00D69BCB /* MainInterface.swift */; };
 		C4FEA00D1DBFF4FF00D69BCB /* LoginPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4FEA00C1DBFF4FF00D69BCB /* LoginPage.swift */; };
 		C4FEA0151DC0569000D69BCB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C4FEA0131DC0569000D69BCB /* Main.storyboard */; };
@@ -48,30 +49,30 @@
 			remoteGlobalIDString = 16A2C3771B9A86DE00D19190;
 			remoteInfo = SensortagBleReceiver;
 		};
-		C4CE238D1DBAF5E50031D581 /* PBXContainerItemProxy */ = {
+		C4993CEC1DCE931900799575 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = C4CE23871DBAF5E40031D581 /* Charts.xcodeproj */;
+			containerPortal = C4993CE61DCE931900799575 /* Charts.xcodeproj */;
 			proxyType = 2;
 			remoteGlobalIDString = 06165F241D8110E600722320;
 			remoteInfo = Charts;
 		};
-		C4CE238F1DBAF5E50031D581 /* PBXContainerItemProxy */ = {
+		C4993CEE1DCE931900799575 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = C4CE23871DBAF5E40031D581 /* Charts.xcodeproj */;
+			containerPortal = C4993CE61DCE931900799575 /* Charts.xcodeproj */;
 			proxyType = 2;
 			remoteGlobalIDString = 06B120D51D811E6200D14B02;
 			remoteInfo = ChartsRealm;
 		};
-		C4CE23911DBAF5E50031D581 /* PBXContainerItemProxy */ = {
+		C4993CF01DCE931900799575 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = C4CE23871DBAF5E40031D581 /* Charts.xcodeproj */;
+			containerPortal = C4993CE61DCE931900799575 /* Charts.xcodeproj */;
 			proxyType = 2;
 			remoteGlobalIDString = 06165F2E1D8110E600722320;
 			remoteInfo = ChartsTests;
 		};
-		C4CE23951DBAF6260031D581 /* PBXContainerItemProxy */ = {
+		C4993CF91DCE963200799575 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = C4CE23871DBAF5E40031D581 /* Charts.xcodeproj */;
+			containerPortal = C4993CE61DCE931900799575 /* Charts.xcodeproj */;
 			proxyType = 1;
 			remoteGlobalIDString = 06165F231D8110E600722320;
 			remoteInfo = Charts;
@@ -85,7 +86,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				C4CE23941DBAF6260031D581 /* Charts.framework in Embed Frameworks */,
+				C4993CF81DCE963200799575 /* Charts.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -140,7 +141,8 @@
 		C43F0BAB1DB85302002620BD /* Cartfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Cartfile; sourceTree = "<group>"; };
 		C43F0BAD1DB85418002620BD /* Home.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Home.swift; path = "../../../Downloads/SensortagBleReceiver-master/SensortagBleReceiver/Home.swift"; sourceTree = "<group>"; };
 		C43F0BAF1DB9C90C002620BD /* TempDetails.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TempDetails.swift; sourceTree = "<group>"; };
-		C4CE23871DBAF5E40031D581 /* Charts.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Charts.xcodeproj; path = "../../Downloads/Charts-master/Charts.xcodeproj"; sourceTree = "<group>"; };
+		C4993CE41DCE92F000799575 /* Charts-master */ = {isa = PBXFileReference; lastKnownFileType = folder; name = "Charts-master"; path = "../Charts-master"; sourceTree = "<group>"; };
+		C4993CE61DCE931900799575 /* Charts.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Charts.xcodeproj; path = "../../../Downloads/Charts-master/Charts.xcodeproj"; sourceTree = "<group>"; };
 		C4FEA0081DBFF43C00D69BCB /* MainInterface.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainInterface.swift; sourceTree = "<group>"; };
 		C4FEA00C1DBFF4FF00D69BCB /* LoginPage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginPage.swift; sourceTree = "<group>"; };
 		C4FEA0141DC0569000D69BCB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -152,7 +154,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C4CE23931DBAF6260031D581 /* Charts.framework in Frameworks */,
+				C4993CF71DCE963200799575 /* Charts.framework in Frameworks */,
 				C43F0BA41DB85097002620BD /* KDCircularProgress in Frameworks */,
 				16A2C3A21B9A872F00D19190 /* CoreBluetooth.framework in Frameworks */,
 			);
@@ -172,7 +174,7 @@
 		16A2C36F1B9A86DE00D19190 = {
 			isa = PBXGroup;
 			children = (
-				C4CE23871DBAF5E40031D581 /* Charts.xcodeproj */,
+				C4993CE41DCE92F000799575 /* Charts-master */,
 				C43F0BAB1DB85302002620BD /* Cartfile */,
 				C43F0BA81DB85207002620BD /* Podfile */,
 				3ECD69141D95A3D00097BC4C /* AFNetworking */,
@@ -197,6 +199,7 @@
 		16A2C37A1B9A86DE00D19190 /* SensortagBleReceiver */ = {
 			isa = PBXGroup;
 			children = (
+				C4993CE61DCE931900799575 /* Charts.xcodeproj */,
 				C43F0BAD1DB85418002620BD /* Home.swift */,
 				C43F0B001DB1F4CB002620BD /* CircleView.swift */,
 				16A2C37F1B9A86DE00D19190 /* AppDelegate.h */,
@@ -291,12 +294,12 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		C4CE23881DBAF5E40031D581 /* Products */ = {
+		C4993CE71DCE931900799575 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				C4CE238E1DBAF5E50031D581 /* Charts.framework */,
-				C4CE23901DBAF5E50031D581 /* ChartsRealm.framework */,
-				C4CE23921DBAF5E50031D581 /* ChartsTests.xctest */,
+				C4993CED1DCE931900799575 /* Charts.framework */,
+				C4993CEF1DCE931900799575 /* ChartsRealm.framework */,
+				C4993CF11DCE931900799575 /* ChartsTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -319,7 +322,7 @@
 			buildRules = (
 			);
 			dependencies = (
-				C4CE23961DBAF6260031D581 /* PBXTargetDependency */,
+				C4993CFA1DCE963200799575 /* PBXTargetDependency */,
 			);
 			name = SensortagBleReceiver;
 			productName = SensortagBleReceiver;
@@ -383,8 +386,8 @@
 			projectDirPath = "";
 			projectReferences = (
 				{
-					ProductGroup = C4CE23881DBAF5E40031D581 /* Products */;
-					ProjectRef = C4CE23871DBAF5E40031D581 /* Charts.xcodeproj */;
+					ProductGroup = C4993CE71DCE931900799575 /* Products */;
+					ProjectRef = C4993CE61DCE931900799575 /* Charts.xcodeproj */;
 				},
 			);
 			projectRoot = "";
@@ -396,25 +399,25 @@
 /* End PBXProject section */
 
 /* Begin PBXReferenceProxy section */
-		C4CE238E1DBAF5E50031D581 /* Charts.framework */ = {
+		C4993CED1DCE931900799575 /* Charts.framework */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.framework;
 			path = Charts.framework;
-			remoteRef = C4CE238D1DBAF5E50031D581 /* PBXContainerItemProxy */;
+			remoteRef = C4993CEC1DCE931900799575 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		C4CE23901DBAF5E50031D581 /* ChartsRealm.framework */ = {
+		C4993CEF1DCE931900799575 /* ChartsRealm.framework */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.framework;
 			path = ChartsRealm.framework;
-			remoteRef = C4CE238F1DBAF5E50031D581 /* PBXContainerItemProxy */;
+			remoteRef = C4993CEE1DCE931900799575 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		C4CE23921DBAF5E50031D581 /* ChartsTests.xctest */ = {
+		C4993CF11DCE931900799575 /* ChartsTests.xctest */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.cfbundle;
 			path = ChartsTests.xctest;
-			remoteRef = C4CE23911DBAF5E50031D581 /* PBXContainerItemProxy */;
+			remoteRef = C4993CF01DCE931900799575 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 /* End PBXReferenceProxy section */
@@ -427,6 +430,7 @@
 				C43F0BAC1DB85302002620BD /* Cartfile in Resources */,
 				C4FEA0151DC0569000D69BCB /* Main.storyboard in Resources */,
 				C43F0BAA1DB85207002620BD /* Podfile in Resources */,
+				C4993CE51DCE92F000799575 /* Charts-master in Resources */,
 				16A2C38C1B9A86DE00D19190 /* LaunchScreen.xib in Resources */,
 				16A2C3891B9A86DE00D19190 /* Images.xcassets in Resources */,
 			);
@@ -578,10 +582,10 @@
 			target = 16A2C3771B9A86DE00D19190 /* SensortagBleReceiver */;
 			targetProxy = 16A2C3921B9A86DE00D19190 /* PBXContainerItemProxy */;
 		};
-		C4CE23961DBAF6260031D581 /* PBXTargetDependency */ = {
+		C4993CFA1DCE963200799575 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = Charts;
-			targetProxy = C4CE23951DBAF6260031D581 /* PBXContainerItemProxy */;
+			targetProxy = C4993CF91DCE963200799575 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 

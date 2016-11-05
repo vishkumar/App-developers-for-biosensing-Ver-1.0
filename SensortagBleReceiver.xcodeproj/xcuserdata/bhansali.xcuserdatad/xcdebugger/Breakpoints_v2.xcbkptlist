@@ -126,6 +126,38 @@
             endingLineNumber = "18"
             landmarkName = "@interface ViewController"
             landmarkType = "2">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "-[ViewController myCentralManager]"
+                  moduleName = "SensortagBleReceiver"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/bhansali/Desktop/App-developers-for-biosensing-Ver-1.0/SensortagBleReceiver/ViewController.h"
+                  timestampString = "500075610.060414"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "103"
+                  endingLineNumber = "103"
+                  offsetFromSymbolStart = "16">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "-[ViewController setMyCentralManager:]"
+                  moduleName = "SensortagBleReceiver"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/bhansali/Desktop/App-developers-for-biosensing-Ver-1.0/SensortagBleReceiver/ViewController.h"
+                  timestampString = "500075610.072251"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "103"
+                  endingLineNumber = "103"
+                  offsetFromSymbolStart = "40">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
