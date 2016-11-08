@@ -20,6 +20,7 @@
 
 
 NSString *UUID_KEY = @"CC2650 SensorTag";
+//NSString *UUID_KEY = @"Sunny's OSHChip";
 NSString *UUID = @"";
 double myText = 90;
 int accRange = 0;
@@ -82,8 +83,6 @@ int datacount = 0;
         NSLog(@"CoreBluetooth BLE hardware is unsupported on this platform");
     }
 }
-
-
 
 
 - (void) centralManager:(CBCentralManager *)central
@@ -217,6 +216,8 @@ int datacount = 0;
         [self getOpticalData:characteristic.value];
     } else if ( [characteristic.UUID isEqual:[CBUUID UUIDWithString:UUID_BAR_DATA]]){
         [self getBmpData:characteristic.value];
+    } else if ( [characteristic.UUID isEqual:[CBUUID UUIDWithString:POLARH7_HRM_HEART_RATE_SERVICE_UUID]]){
+        [self getHeartRateData: characteristic.value];
     }
 }
 - (void) getTemperatureData:(NSData *)data{
@@ -235,6 +236,11 @@ int datacount = 0;
     NSString *str = [NSString stringWithFormat:@"%@", _tagAmbTemp.stringValue];
     NSArray *Array = [str componentsSeparatedByString:@"."];
     self.tempvaluestr = [Array objectAtIndex:0];
+    
+    NSScanner *scanner = [data bytes];
+    // bypass '#' character
+    [scanner scanHexInt:&data];
+    NSLog(@"Temperature %@", data);
     
    //    NSString *separatorString = @".";
 //    NSString *myString = [NSString stringWithFormat:@"%@", _tagObjTemp.stringValue];
@@ -277,13 +283,27 @@ int datacount = 0;
     //    NSLog(@"%f C, %f  RH", sensorHdc1000TempConvert(temp), sensorHdc1000HumConvert(hum));
     _tagHum = [[NSNumber alloc] initWithFloat:sensorHdc1000HumConvert(hum)];
     [_humLabel setText:[_tagHum stringValue]];
-    //self.humidityValueStr = [NSString stringWithFormat:@"%@", _tagHum.stringValue];
+    self.humidityValueStr = [NSString stringWithFormat:@"%@", _tagHum.stringValue];
     
-    NSString *str = [NSString stringWithFormat:@"%@", _tagHum.stringValue];
-    NSArray *Array = [str componentsSeparatedByString:@"."];
-    self.humidityValueStr = [Array objectAtIndex:0];
+//    NSString *str = [NSString stringWithFormat:@"%@", _tagHum.stringValue];
+//    NSArray *Array = [str componentsSeparatedByString:@"."];
+//    self.humidityValueStr = [Array objectAtIndex:0];
 }
 
+- (void) getHeartRateData:(NSData *)data{
+    const Byte *orgBytes = [data bytes];
+    //    int16_t temp =(orgBytes[1] << 8) + orgBytes[0];
+    int16_t hum = (orgBytes[3] << 8) + orgBytes[2];
+    //    sensorHdc1000Convert(temp, hum, tempFloat, humFloat);
+    //    NSLog(@"%f C, %f  RH", sensorHdc1000TempConvert(temp), sensorHdc1000HumConvert(hum));
+    _tagHum = [[NSNumber alloc] initWithFloat:sensorHdc1000HumConvert(hum)];
+    [_humLabel setText:[_tagHum stringValue]];
+    self.humidityValueStr = [NSString stringWithFormat:@"%@", _tagHum.stringValue];
+    NSLog(@"HeartRate %@", _tagHum.stringValue);
+    //    NSString *str = [NSString stringWithFormat:@"%@", _tagHum.stringValue];
+    //    NSArray *Array = [str componentsSeparatedByString:@"."];
+    //    self.humidityValueStr = [Array objectAtIndex:0];
+}
 
 - (void) getMotionData:(NSData *) data
 {

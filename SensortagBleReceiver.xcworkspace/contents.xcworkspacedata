@@ -2,7 +2,7 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "group:SensortagBleReceiver.xcodeproj">
+      location = "group:/Users/bhansali/Desktop/App-developers-for-biosensing-Ver-1.0/SensortagBleReceiver.xcodeproj">
    </FileRef>
    <FileRef
       location = "group:Pods/Pods.xcodeproj">

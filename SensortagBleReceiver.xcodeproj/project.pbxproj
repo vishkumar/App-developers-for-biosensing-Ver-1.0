@@ -36,9 +36,9 @@
 		C4993CE51DCE92F000799575 /* Charts-master in Resources */ = {isa = PBXBuildFile; fileRef = C4993CE41DCE92F000799575 /* Charts-master */; };
 		C4993CF71DCE963200799575 /* Charts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C4993CED1DCE931900799575 /* Charts.framework */; };
 		C4993CF81DCE963200799575 /* Charts.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = C4993CED1DCE931900799575 /* Charts.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		C4993D0D1DCEA66400799575 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C4993D0B1DCEA66400799575 /* Main.storyboard */; };
 		C4FEA0091DBFF43C00D69BCB /* MainInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4FEA0081DBFF43C00D69BCB /* MainInterface.swift */; };
 		C4FEA00D1DBFF4FF00D69BCB /* LoginPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4FEA00C1DBFF4FF00D69BCB /* LoginPage.swift */; };
-		C4FEA0151DC0569000D69BCB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C4FEA0131DC0569000D69BCB /* Main.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -143,9 +143,9 @@
 		C43F0BAF1DB9C90C002620BD /* TempDetails.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TempDetails.swift; sourceTree = "<group>"; };
 		C4993CE41DCE92F000799575 /* Charts-master */ = {isa = PBXFileReference; lastKnownFileType = folder; name = "Charts-master"; path = "../Charts-master"; sourceTree = "<group>"; };
 		C4993CE61DCE931900799575 /* Charts.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Charts.xcodeproj; path = "../../../Downloads/Charts-master/Charts.xcodeproj"; sourceTree = "<group>"; };
+		C4993D0C1DCEA66400799575 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		C4FEA0081DBFF43C00D69BCB /* MainInterface.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainInterface.swift; sourceTree = "<group>"; };
 		C4FEA00C1DBFF4FF00D69BCB /* LoginPage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginPage.swift; sourceTree = "<group>"; };
-		C4FEA0141DC0569000D69BCB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		CE7AD132FF5F1BB786AAEDF8 /* Pods-SensortagBleReceiver.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SensortagBleReceiver.release.xcconfig"; path = "Pods/Target Support Files/Pods-SensortagBleReceiver/Pods-SensortagBleReceiver.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -205,10 +205,10 @@
 				16A2C37F1B9A86DE00D19190 /* AppDelegate.h */,
 				16A2C3801B9A86DE00D19190 /* AppDelegate.m */,
 				C43F0BA51DB850FB002620BD /* KDCircularProgress.swift */,
+				C4993D0B1DCEA66400799575 /* Main.storyboard */,
 				C4FEA00C1DBFF4FF00D69BCB /* LoginPage.swift */,
 				16A2C3821B9A86DE00D19190 /* ViewController.h */,
 				16A2C3831B9A86DE00D19190 /* ViewController.m */,
-				C4FEA0131DC0569000D69BCB /* Main.storyboard */,
 				C4FEA0081DBFF43C00D69BCB /* MainInterface.swift */,
 				16A2C3881B9A86DE00D19190 /* Images.xcassets */,
 				16A2C38A1B9A86DE00D19190 /* LaunchScreen.xib */,
@@ -428,9 +428,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				C43F0BAC1DB85302002620BD /* Cartfile in Resources */,
-				C4FEA0151DC0569000D69BCB /* Main.storyboard in Resources */,
 				C43F0BAA1DB85207002620BD /* Podfile in Resources */,
 				C4993CE51DCE92F000799575 /* Charts-master in Resources */,
+				C4993D0D1DCEA66400799575 /* Main.storyboard in Resources */,
 				16A2C38C1B9A86DE00D19190 /* LaunchScreen.xib in Resources */,
 				16A2C3891B9A86DE00D19190 /* Images.xcassets in Resources */,
 			);
@@ -598,10 +598,10 @@
 			name = LaunchScreen.xib;
 			sourceTree = "<group>";
 		};
-		C4FEA0131DC0569000D69BCB /* Main.storyboard */ = {
+		C4993D0B1DCEA66400799575 /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
-				C4FEA0141DC0569000D69BCB /* Base */,
+				C4993D0C1DCEA66400799575 /* Base */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
