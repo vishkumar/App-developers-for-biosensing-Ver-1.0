@@ -10,6 +10,8 @@
     bool eventState;
     NSString * randomText;
     double myText;
+    NSArray *allTempData;
+    NSData * value;
 }
 
 @property (nonatomic,assign) BOOL didUpdateValueForCharacteristic;
@@ -100,6 +102,11 @@ int datacount = 0;
     _peripheralDevice = peripheral;
     _peripheralDevice.delegate = self;
     [_myCentralManager connectPeripheral:_peripheralDevice options:nil];
+//    self.deviceUUIDValue = [NSString stringWithFormat:@"%@", peripheral.identifier];
+//    self.deviceNameValue = [NSString stringWithFormat:@"%@", peripheral.name];
+////   
+    self.deviceUUIDValue = @"ussdf234234";
+    self.deviceNameValue = @"Sunny";
     
 }
 
@@ -107,6 +114,9 @@ int datacount = 0;
       NSLog(@"bluetoothHandler11111: Found peripheral with UUID : %@ and Name : %@ (%ld dBm)",peripheral.identifier,peripheral.name,(long)[RSSI integerValue]);
     _rssi = RSSI;
     _rssiLabel.text = [NSString stringWithFormat:@"%@ dBm",RSSI.stringValue];
+//     self.deviceRSSIValue = [NSString stringWithFormat:@"%@ dBm", RSSI.stringValue];
+//    self.deviceRSSIValue = [NSString stringWithFormat:@"%@ dBm", RSSI.stringValue];
+//    self.deviceRSSIValue = [NSString stringWithFormat:@"%@", _rssi.stringValue];
 
 }
      
@@ -119,8 +129,6 @@ int datacount = 0;
     
   
 }
-
-
 
 - (void)peripheral:(CBPeripheral *)peripheral didDiscoverServices:(NSError *)error
 {
@@ -153,7 +161,12 @@ int datacount = 0;
         } else if ( [characteristic.UUID isEqual:[CBUUID UUIDWithString:UUID_BAR_CONF]]){ //
             [peripheral writeValue:enableData forCharacteristic:characteristic type:CBCharacteristicWriteWithResponse];
             [peripheral setNotifyValue:YES forCharacteristic:[self getCharateristicWithUUID:UUID_BAR_DATA from:service]];
-        } else if ( [characteristic.UUID isEqual:[CBUUID UUIDWithString:UUID_MOV_CONF]]){ //
+        }
+        else if ( [characteristic.UUID isEqual:[CBUUID UUIDWithString:UUID_HEART_RATE_CONF]]){ //
+            [peripheral writeValue:enableData forCharacteristic:characteristic type:CBCharacteristicWriteWithResponse];
+            [peripheral setNotifyValue:YES forCharacteristic:[self getCharateristicWithUUID:UUID_HEART_RATE_DATA from:service]];
+        }
+        else if ( [characteristic.UUID isEqual:[CBUUID UUIDWithString:UUID_MOV_CONF]]){ //
             
             unsigned short e = 0;
             e |= FLAG_ACC_X | FLAG_ACC_Y | FLAG_ACC_Z | FLAG_GYRO_X | FLAG_GYRO_Y | FLAG_GYRO_Z | FLAG_MAG;
@@ -216,11 +229,12 @@ int datacount = 0;
         [self getOpticalData:characteristic.value];
     } else if ( [characteristic.UUID isEqual:[CBUUID UUIDWithString:UUID_BAR_DATA]]){
         [self getBmpData:characteristic.value];
-    } else if ( [characteristic.UUID isEqual:[CBUUID UUIDWithString:POLARH7_HRM_HEART_RATE_SERVICE_UUID]]){
+    } else if ( [characteristic.UUID isEqual:[CBUUID UUIDWithString:UUID_HEART_RATE_DATA]]){
         [self getHeartRateData: characteristic.value];
     }
 }
 - (void) getTemperatureData:(NSData *)data{
+
     const Byte *orgBytes = [data bytes];
     uint16_t obj = (orgBytes[1] << 8) +orgBytes[0];
     uint16_t ambience = (orgBytes[3] << 8) + orgBytes[2];
@@ -228,26 +242,49 @@ int datacount = 0;
     _tagObjTemp = [[NSNumber alloc] initWithFloat:sensorTmp007ObjConvert(obj)];
     _tagAmbTemp = [[NSNumber alloc] initWithFloat:sensorTmp007AmbConvert(ambience)];
     
-    [_objTempLabel setText:[_tagObjTemp stringValue]];
-    [_ambTempLabel setText:[_tagAmbTemp stringValue]];
-    //tempValue = [_tagObjTemp stringValue];
-     //self.tempvaluestr = @"123";
-    //self.tempvaluestr = [NSString stringWithFormat:@"%@", _tagObjTemp.stringValue];
-    NSString *str = [NSString stringWithFormat:@"%@", _tagAmbTemp.stringValue];
+    NSString *str = [NSString stringWithFormat:@"%@", _tagObjTemp.stringValue];
     NSArray *Array = [str componentsSeparatedByString:@"."];
     self.tempvaluestr = [Array objectAtIndex:0];
     
-    NSScanner *scanner = [data bytes];
-    // bypass '#' character
-    [scanner scanHexInt:&data];
-    NSLog(@"Temperature %@", data);
+    NSString *typeCasting = (NSString *)data;
+  
+    NSLog(@"Type Caste %@", typeCasting);
+  
+    NSData *data1 = [data subdataWithRange:NSMakeRange(1, 1)];
+    NSData *data2 = [data subdataWithRange:NSMakeRange(2, 1)];
     
-   //    NSString *separatorString = @".";
-//    NSString *myString = [NSString stringWithFormat:@"%@", _tagObjTemp.stringValue];
-//    self.tempvaluestr = [myString componentsSeparatedByString:separatorString];
-//   // self.allTempData
+    //int value = CFSwapInt32BigToHost(*(int*)([data4 bytes]));
     
+    NSMutableData *concatenatedData = [data2 mutableCopy];
+    //[concatenatedData appendData:data2];
+    [concatenatedData appendData:data1];
+    
+//    uint8_t byte;
+//    [concatenatedData getBytes:&byte length:1];
+//    
+//    int x = byte;
+    
+    NSString *stringData = [concatenatedData description];
+    stringData = [stringData substringWithRange:NSMakeRange(1, [stringData length]-2)];
+    
+    unsigned dataAsInt = 0;
+    NSScanner *scanner = [NSScanner scannerWithString: stringData];
+    [scanner scanHexInt:& dataAsInt];
+    
+    float a = [[NSNumber numberWithInt: dataAsInt] floatValue];
+    a = a/100;
+    self.tempvaluestr = [NSString stringWithFormat:@"%.1f",
+                         a];
+    
+    
+    NSLog(@"Temperature data1:::: %@", data1);
+    NSLog(@"Temperature data2:::: %@", data2);
+    NSLog(@"Temperature String :::: %.1f", a);
+    NSLog(@"Temperature converted :::: %@", concatenatedData);
+
 }
+
+
 
 - (void) getOpticalData:(NSData *)data {
     const Byte *orgBytes = [data bytes];
@@ -291,15 +328,23 @@ int datacount = 0;
 }
 
 - (void) getHeartRateData:(NSData *)data{
-    const Byte *orgBytes = [data bytes];
-    //    int16_t temp =(orgBytes[1] << 8) + orgBytes[0];
-    int16_t hum = (orgBytes[3] << 8) + orgBytes[2];
-    //    sensorHdc1000Convert(temp, hum, tempFloat, humFloat);
-    //    NSLog(@"%f C, %f  RH", sensorHdc1000TempConvert(temp), sensorHdc1000HumConvert(hum));
-    _tagHum = [[NSNumber alloc] initWithFloat:sensorHdc1000HumConvert(hum)];
-    [_humLabel setText:[_tagHum stringValue]];
-    self.humidityValueStr = [NSString stringWithFormat:@"%@", _tagHum.stringValue];
-    NSLog(@"HeartRate %@", _tagHum.stringValue);
+ 
+     NSData *data4 = [data subdataWithRange:NSMakeRange(1, 1)];
+    
+    uint8_t byte;
+    [data4 getBytes:&byte length:1];
+    
+    int x = byte;
+    
+    self.alcoholValueStr = [NSString stringWithFormat:@"%d", x];
+    
+    // Get the Heart Rate Monitor BPM
+    
+    
+   // self.alcoholValueStr = data;
+    NSLog(@"HeartRate Converted DATA::::: %d", x);
+    
+    NSLog(@"HeartRate RAW DATA::::: %@", data);
     //    NSString *str = [NSString stringWithFormat:@"%@", _tagHum.stringValue];
     //    NSArray *Array = [str componentsSeparatedByString:@"."];
     //    self.humidityValueStr = [Array objectAtIndex:0];
@@ -353,6 +398,16 @@ int datacount = 0;
     
 }
 
+float tempConvert8Bit(uint8_t rawObjTemp)
+{
+    const float SCALE_LSB = 0.03125;
+    float t;
+    int it;
+    
+    it = (int)((rawObjTemp) >> 1);
+    t = ((float)(it)) * SCALE_LSB;
+    return t;
+}
 
 float sensorTmp007ObjConvert(uint16_t rawObjTemp)
 {

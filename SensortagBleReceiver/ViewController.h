@@ -30,6 +30,10 @@ extern NSString * UUID_KEY;
 #define UUID_DEVINFO_SERV @"0000180a-0000-1000-8000-00805f9b34fb"
 #define UUID_DEVINFO_FWREV @"00002A26-0000-1000-8000-00805f9b34fb"
 
+#define UUID_HEART_RATE_DATA @"2A37"
+
+#define UUID_HEART_RATE_CONF @"2A37"
+
 #define UUID_IRT_SERV @"f000aa00-0451-4000-b000-000000000000"
 //define UUID_IRT_DATA @"f000aa01-0451-4000-b000-000000000000"
 #define UUID_IRT_DATA @"2A1C"
@@ -147,6 +151,10 @@ extern NSString * UUID_KEY;
 @property (nonatomic, strong) NSString *pressureValueStr;
 @property (nonatomic, strong) NSString *humidityValueStr;
 @property (nonatomic, strong) NSString *opticalValueStr;
+@property (nonatomic, strong) NSString *alcoholValueStr;
+@property (nonatomic, strong) NSString *deviceUUIDValue;
+@property (nonatomic, strong) NSString *deviceNameValue;
+@property (nonatomic, strong) NSString *deviceRSSIValue;
 @property (nonatomic, strong) NSArray *allTempData;
 
 
