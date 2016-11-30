@@ -236,19 +236,16 @@ int datacount = 0;
 - (void) getTemperatureData:(NSData *)data{
 
     const Byte *orgBytes = [data bytes];
-    uint16_t obj = (orgBytes[1] << 8) +orgBytes[0];
-    uint16_t ambience = (orgBytes[3] << 8) + orgBytes[2];
-    //    NSLog(@"Obj:%f, Amboence:%f,", sensorTmp007ObjConvert(obj), sensorTmp007AmbConvert(ambience));
-    _tagObjTemp = [[NSNumber alloc] initWithFloat:sensorTmp007ObjConvert(obj)];
-    _tagAmbTemp = [[NSNumber alloc] initWithFloat:sensorTmp007AmbConvert(ambience)];
+//    uint16_t obj = (orgBytes[1] << 8) +orgBytes[0];
+//    uint16_t ambience = (orgBytes[3] << 8) + orgBytes[2];
+//    //    NSLog(@"Obj:%f, Amboence:%f,", sensorTmp007ObjConvert(obj), sensorTmp007AmbConvert(ambience));
+//    _tagObjTemp = [[NSNumber alloc] initWithFloat:sensorTmp007ObjConvert(obj)];
+//    _tagAmbTemp = [[NSNumber alloc] initWithFloat:sensorTmp007AmbConvert(ambience)];
     
     NSString *str = [NSString stringWithFormat:@"%@", _tagObjTemp.stringValue];
     NSArray *Array = [str componentsSeparatedByString:@"."];
     self.tempvaluestr = [Array objectAtIndex:0];
     
-    NSString *typeCasting = (NSString *)data;
-  
-    NSLog(@"Type Caste %@", typeCasting);
   
     NSData *data1 = [data subdataWithRange:NSMakeRange(1, 1)];
     NSData *data2 = [data subdataWithRange:NSMakeRange(2, 1)];
@@ -259,11 +256,7 @@ int datacount = 0;
     //[concatenatedData appendData:data2];
     [concatenatedData appendData:data1];
     
-//    uint8_t byte;
-//    [concatenatedData getBytes:&byte length:1];
-//    
-//    int x = byte;
-    
+
     NSString *stringData = [concatenatedData description];
     stringData = [stringData substringWithRange:NSMakeRange(1, [stringData length]-2)];
     

@@ -186,11 +186,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "SensortagBleReceiver/ViewController.m"
-            timestampString = "501388163.721555"
+            timestampString = "501709057.8267"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "353"
-            endingLineNumber = "353"
+            startingLineNumber = "346"
+            endingLineNumber = "346"
             landmarkName = "-getMotionData:"
             landmarkType = "7">
          </BreakpointContent>
@@ -282,11 +282,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "SensortagBleReceiver/ViewController.m"
-            timestampString = "501388163.721555"
+            timestampString = "501709057.8267"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "276"
-            endingLineNumber = "276"
+            startingLineNumber = "269"
+            endingLineNumber = "269"
             landmarkName = "-getTemperatureData:"
             landmarkType = "7">
          </BreakpointContent>
@@ -314,11 +314,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "SensortagBleReceiver/ViewController.m"
-            timestampString = "501388163.721555"
+            timestampString = "501709057.8267"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "278"
-            endingLineNumber = "278"
+            startingLineNumber = "271"
+            endingLineNumber = "271"
             landmarkName = "-getTemperatureData:"
             landmarkType = "7">
          </BreakpointContent>
@@ -346,43 +346,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "SensortagBleReceiver/ViewController.m"
-            timestampString = "501368281.791711"
+            timestampString = "501709057.8267"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "257"
-            endingLineNumber = "257"
-            landmarkName = "-getTemperatureData:"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "SensortagBleReceiver/ViewController.m"
-            timestampString = "501368281.791711"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "263"
-            endingLineNumber = "263"
-            landmarkName = "-getTemperatureData:"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "SensortagBleReceiver/ViewController.m"
-            timestampString = "501387795.812979"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "266"
-            endingLineNumber = "266"
+            startingLineNumber = "254"
+            endingLineNumber = "254"
             landmarkName = "-getTemperatureData:"
             landmarkType = "7">
          </BreakpointContent>
