@@ -235,17 +235,13 @@ int datacount = 0;
 }
 - (void) getTemperatureData:(NSData *)data{
 
-    const Byte *orgBytes = [data bytes];
-//    uint16_t obj = (orgBytes[1] << 8) +orgBytes[0];
-//    uint16_t ambience = (orgBytes[3] << 8) + orgBytes[2];
-//    //    NSLog(@"Obj:%f, Amboence:%f,", sensorTmp007ObjConvert(obj), sensorTmp007AmbConvert(ambience));
-//    _tagObjTemp = [[NSNumber alloc] initWithFloat:sensorTmp007ObjConvert(obj)];
-//    _tagAmbTemp = [[NSNumber alloc] initWithFloat:sensorTmp007AmbConvert(ambience)];
-    
-    NSString *str = [NSString stringWithFormat:@"%@", _tagObjTemp.stringValue];
-    NSArray *Array = [str componentsSeparatedByString:@"."];
-    self.tempvaluestr = [Array objectAtIndex:0];
-    
+//    const Byte *orgBytes = [data bytes];
+//
+//    
+//    NSString *str = [NSString stringWithFormat:@"%@", _tagObjTemp.stringValue];
+//    NSArray *Array = [str componentsSeparatedByString:@"."];
+//    self.tempvaluestr = [Array objectAtIndex:0];
+//    
   
     NSData *data1 = [data subdataWithRange:NSMakeRange(1, 1)];
     NSData *data2 = [data subdataWithRange:NSMakeRange(2, 1)];
@@ -338,9 +334,7 @@ int datacount = 0;
     NSLog(@"HeartRate Converted DATA::::: %d", x);
     
     NSLog(@"HeartRate RAW DATA::::: %@", data);
-    //    NSString *str = [NSString stringWithFormat:@"%@", _tagHum.stringValue];
-    //    NSArray *Array = [str componentsSeparatedByString:@"."];
-    //    self.humidityValueStr = [Array objectAtIndex:0];
+   
 }
 
 - (void) getMotionData:(NSData *) data
